@@ -1,0 +1,89 @@
+.act2 {
+  position: relative;
+  height: 320vh;
+  background: var(--metal-0);
+  color: var(--chrome);
+}
+.a2-sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 1fr auto;
+  column-gap: var(--gutter);
+  padding: clamp(72px, 12vh, 140px) var(--gutter) clamp(28px, 6vh, 64px);
+  overflow: hidden;
+  /* brushed metal: fine horizontal grain + a cold top light */
+  background:
+    radial-gradient(120% 70% at 30% -10%, rgba(233, 235, 238, 0.12), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, var(--metal-1), var(--metal-0));
+  opacity: calc(1 - var(--exit, 0) * 0.6);
+}
+.a2-title {
+  grid-column: 1 / -1;
+  font-size: var(--t-huge);
+  line-height: 0.84;
+  transform: translateY(var(--title-y, 0));
+  /* a moving band of white light runs across the metal letters */
+  background: linear-gradient(
+      100deg,
+      #5d6168 0%,
+      #9aa0a8 calc(var(--sweep, 120%) - 18%),
+      #ffffff var(--sweep, 120%),
+      #9aa0a8 calc(var(--sweep, 120%) + 18%),
+      #5d6168 100%
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.a2-title span { display: block; }
+.a2-brand { padding-left: 0.6em; }
+
+.a2-reasons {
+  grid-column: 1 / -1;
+  align-self: end;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  border-top: 1px solid rgba(233, 235, 238, 0.18);
+  padding-top: 24px;
+}
+.a2-reason {
+  opacity: var(--i);
+  transform: translateY(calc((1 - var(--i)) * 40px));
+}
+.a2-reason dt {
+  font: 900 var(--t-mid) / 1 var(--f-display);
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.5em;
+}
+.a2-reason dd {
+  margin: 0;
+  color: #b4b9c1;
+  max-width: 38ch;
+}
+.a2-foot {
+  grid-column: 1 / span 8;
+  margin-top: clamp(20px, 5vh, 56px);
+  font: 400 italic clamp(1.2rem, 2vw, 1.9rem) / 1.2 var(--f-serif);
+  color: #fff;
+}
+
+.act2.is-static { height: auto; }
+.act2.is-static .a2-sticky { position: relative; height: auto; }
+.act2.is-static .a2-title { color: #fff; background: none; }
+
+@media (max-width: 860px) {
+  .a2-sticky { height: auto; min-height: 100svh; position: relative; }
+  .act2 { height: auto; }
+  .a2-reasons { grid-template-columns: 1fr; margin-top: 8vh; }
+  .a2-reason { opacity: 1; transform: none; }
+  .a2-foot { grid-column: 1 / -1; }
+  .a2-title { background: none; color: #fff; }
+}

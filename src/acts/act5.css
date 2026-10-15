@@ -1,0 +1,111 @@
+.act5 {
+  position: relative;
+  background: var(--void);
+  color: #fff3e6;
+}
+.act5 ::selection { background: var(--ember); color: #000; }
+.a5-track { position: relative; height: 420vh; }
+.a5-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+.a5-glow {
+  position: absolute;
+  inset: auto -10% -30% -10%;
+  height: 80%;
+  background: radial-gradient(50% 60% at 50% 100%, rgba(255, 90, 18, 0.55), rgba(255, 90, 18, 0.08) 60%, transparent 75%);
+  opacity: var(--glow, 0.3);
+  pointer-events: none;
+}
+.a5-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.a5-claim {
+  /* drawn on the canvas; kept here for screen readers and reduced motion */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.a5-why {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  top: 50%;
+  transform: translateY(calc(-50% + (1 - var(--why, 0)) * 30px));
+  max-width: 26ch;
+  margin: 0 auto;
+  text-align: left;
+  font: 400 italic clamp(1.7rem, 3.4vw, 3.2rem) / 1.12 var(--f-serif);
+  color: var(--flare);
+  opacity: var(--why, 0);
+}
+.a5-talk {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--gutter);
+  opacity: var(--talk, 0);
+  visibility: hidden;
+}
+.act5.talk-on .a5-talk { visibility: visible; }
+.a5-talk h2 {
+  font-size: var(--t-mega);
+  color: #fff;
+  text-shadow: 0 0 60px rgba(255, 90, 18, 0.45);
+  transform: scale(calc(1.08 - var(--talk, 0) * 0.08));
+  transform-origin: 0 50%;
+}
+.a5-links {
+  list-style: none;
+  margin: 3vh 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.a5-btn {
+  display: inline-block;
+  padding: 16px 22px;
+  border: 1px solid rgba(255, 243, 230, 0.4);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.a5-btn:hover { border-color: #fff; }
+.a5-btn.is-primary { background: var(--ember); border-color: var(--ember); color: #160600; }
+.a5-btn.is-primary:hover { background: var(--flare); border-color: var(--flare); }
+
+.a5-footer {
+  position: relative;
+  padding: 10vh var(--gutter) 6vh;
+  background: var(--void);
+  border-top: 1px solid rgba(255, 243, 230, 0.12);
+}
+.a5-footer .display { font-size: var(--t-big); color: var(--ash); }
+.a5-credits { margin-top: 4vh; max-width: 70ch; color: #9b9087; font-size: var(--t-small); }
+
+/* reduced motion */
+.act5.is-static .a5-track { height: auto; }
+.act5.is-static .a5-sticky { position: relative; height: auto; padding: 18vh 0; }
+.act5.is-static .a5-canvas { display: none; }
+.act5.is-static .a5-claim {
+  position: static; width: auto; height: auto; clip: auto;
+  padding: 0 var(--gutter);
+  font: 900 var(--t-huge) / 0.88 var(--f-display);
+  text-transform: uppercase;
+  color: var(--flare);
+}
+.act5.is-static .a5-why { position: relative; top: auto; transform: none; opacity: 1; margin: 10vh var(--gutter); }
+.act5.is-static .a5-talk { position: relative; opacity: 1; visibility: visible; }
+.act5.is-static .a5-footer { position: relative; }
+.a5-credits a { color: #d8cdc2; }

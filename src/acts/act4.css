@@ -1,0 +1,50 @@
+.act4 { background: var(--metal-0); color: var(--chrome); }
+.a4-intro {
+  min-height: 100svh;
+  padding: clamp(80px, 14vh, 160px) var(--gutter) clamp(40px, 8vh, 96px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-content: space-between;
+  column-gap: var(--gutter);
+  row-gap: 6vh;
+  /* the red of Act III bleeds out as we enter the proof */
+  background: linear-gradient(180deg, var(--signal) 0, var(--metal-0) 38%);
+}
+.a4-intro h2 {
+  grid-column: 1 / -1;
+  font-size: var(--t-mega);
+  color: #fff;
+}
+.a4-lede {
+  grid-column: 1 / span 5;
+  font: 400 italic clamp(1.3rem, 2.2vw, 2rem) / 1.15 var(--f-serif);
+  color: #fff;
+}
+.a4-index {
+  grid-column: 7 / -1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: exp;
+  border-top: 1px solid rgba(233, 235, 238, 0.2);
+}
+.a4-index li { counter-increment: exp; border-bottom: 1px solid rgba(233, 235, 238, 0.2); }
+.a4-index a {
+  display: grid;
+  grid-template-columns: 3ch 1fr auto;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  text-decoration: none;
+  transition: padding 0.3s var(--ease-out), color 0.2s;
+}
+.a4-index a::before { content: counter(exp, decimal-leading-zero); font: 400 0.8rem/1 var(--f-code); color: var(--steel); }
+.a4-index a .display { font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
+.a4-index a span:last-child { color: var(--steel); font-size: 0.9rem; }
+.a4-index a:hover { padding-left: 10px; color: #fff; }
+
+@media (max-width: 860px) {
+  .a4-lede, .a4-index { grid-column: 1 / -1; }
+  .a4-index a { grid-template-columns: 3ch 1fr; }
+  .a4-index a span:last-child { grid-column: 2; }
+}

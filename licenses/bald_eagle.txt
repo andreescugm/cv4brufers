@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bald Eagle
+* source:	https://sketchfab.com/3d-models/bald-eagle-8874cfcf83a54575ba8068376f8a63a8
+* author:	ucdavisterc (https://sketchfab.com/ucdavisterc)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bald Eagle" (https://sketchfab.com/3d-models/bald-eagle-8874cfcf83a54575ba8068376f8a63a8) by ucdavisterc (https://sketchfab.com/ucdavisterc) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

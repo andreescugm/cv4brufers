@@ -1,0 +1,204 @@
+.act1 {
+  position: relative;
+  height: 640vh;
+  background: #05070f;
+  color: #fff;
+}
+.a1-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ── 3D street ─────────────────────────── */
+.a1-scene,
+.a1-canvas,
+.a1-canvas canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.a1-scene-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 50% at 70% 30%, rgba(60, 80, 200, 0.35), transparent 70%),
+    radial-gradient(50% 40% at 20% 80%, rgba(200, 16, 46, 0.3), transparent 70%),
+    #05070f;
+}
+.a1-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* keeps the poster type legible over the neon */
+  background:
+    linear-gradient(90deg, rgba(3, 4, 10, 0.86) 0%, rgba(3, 4, 10, 0.45) 45%, transparent 70%),
+    linear-gradient(0deg, rgba(3, 4, 10, 0.7), transparent 40%);
+}
+
+/* ── POSTER ───────────────────────────── */
+.a1-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.a1-name {
+  position: absolute;
+  left: var(--gutter);
+  top: 50%;
+  transform: translateY(-58%);
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(4.5rem, 15vw, 19rem);
+  z-index: 2;
+}
+.a1-name span {
+  display: block;
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+.a1-name-top {
+  color: #fff;
+}
+.a1-name-bot {
+  color: var(--usa-red);
+  font-size: 0.72em;
+  margin-top: -0.02em;
+}
+.a1-portrait {
+  position: absolute;
+  right: 2vw;
+  bottom: 0;
+  margin: 0;
+  height: 88svh;
+  aspect-ratio: 1280 / 1282;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+.a1-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  /* rim light from the neon behind him */
+  filter: drop-shadow(-14px 0 30px rgba(90, 120, 255, 0.35)) drop-shadow(10px 0 26px rgba(200, 16, 46, 0.3));
+}
+.a1-byline {
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(20px, 5vh, 48px);
+  max-width: 28ch;
+  font: 400 italic clamp(1.15rem, 1.6vw, 1.6rem) / 1.2 var(--f-serif);
+  z-index: 2;
+}
+.a1-byline strong {
+  font-style: normal;
+  font-family: var(--f-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--usa-red);
+  letter-spacing: 0.01em;
+}
+.a1-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(20px, 5vh, 48px);
+  width: 2px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+.a1-cue i {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  animation: a1-cue 1.8s var(--ease-out) infinite;
+}
+@keyframes a1-cue {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+/* ── CAPTIONS ─────────────────────────── */
+.a1-captions {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.a1-cap {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(24px, 9vh, 96px);
+  opacity: 0;
+}
+.a1-cap .display {
+  font-size: var(--t-huge);
+  max-width: 14ch;
+  color: #fff;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+}
+.a1-cap-sub {
+  margin-top: 0.6em;
+  max-width: 40ch;
+  display: inline-block;
+  background: var(--usa-red);
+  color: #fff;
+  padding: 0.35em 0.6em;
+  font-weight: 600;
+}
+
+/* ── THE TURN ─────────────────────────── */
+.a1-but {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 0 0.22em;
+  padding: 0 var(--gutter);
+  font-size: var(--t-huge);
+  color: #fff;
+  pointer-events: none;
+}
+.a1-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+.a1-mask > span { display: inline-block; }
+.a1-curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--metal-0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* static fallback (reduced motion): poster, then the captions, then the message */
+.act1.is-static { height: auto; }
+.act1.is-static .a1-sticky { position: relative; height: auto; overflow: visible; }
+.act1.is-static .a1-scene { height: 100svh; }
+.act1.is-static .a1-vignette { height: 100svh; }
+.act1.is-static .a1-poster { position: absolute; height: 100svh; }
+.act1.is-static .a1-captions { position: relative; margin-top: 100svh; padding: 10vh var(--gutter); background: #05070f; }
+.act1.is-static .a1-cap { position: relative; opacity: 1; left: 0; right: 0; bottom: 0; margin-bottom: 8vh; }
+.act1.is-static .a1-but { position: relative; background: var(--metal-0); min-height: 80svh; }
+.act1.is-static .a1-curtain { display: none; }
+
+@media (max-width: 700px) {
+  .a1-name { top: 14vh; transform: none; font-size: 22vw; }
+  .a1-portrait { height: 62svh; right: -12vw; }
+  .a1-vignette {
+    background: linear-gradient(180deg, rgba(3, 4, 10, 0.85) 0%, rgba(3, 4, 10, 0.2) 45%, rgba(3, 4, 10, 0.7) 100%);
+  }
+  .a1-byline { right: var(--gutter); z-index: 3; text-shadow: 0 2px 12px #000; }
+  .a1-cue { display: none; }
+}

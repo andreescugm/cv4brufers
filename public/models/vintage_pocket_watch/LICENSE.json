@@ -1,0 +1,45 @@
+{
+  "id": "polyhaven:vintage_pocket_watch",
+  "name": "Vintage Pocket Watch",
+  "license": "CC0",
+  "attribution_required": false,
+  "kind": "model",
+  "formats": [
+    "blend",
+    "glb",
+    "fbx",
+    "usd"
+  ],
+  "tags": [
+    "antique",
+    "gold",
+    "mechanical",
+    "minute hand",
+    "numerals",
+    "old-fashioned",
+    "ornate",
+    "pocket watch",
+    "props",
+    "round",
+    "time",
+    "timepiece",
+    "vintage",
+    "watch",
+    "watchface"
+  ],
+  "description": "Vintage Pocket Watch \u2014 CC0 model by Tal Swicegood (Poly Haven). Tags: antique, gold, mechanical, minute hand, numerals, old-fashioned, ornate, pocket watch, props, round, time, timepiece, vintage, watch, watchface.",
+  "engine_targets": [
+    "blender",
+    "godot",
+    "unreal"
+  ],
+  "preview_url": "https://cdn.polyhaven.com/asset_img/thumbs/vintage_pocket_watch.png?width=400",
+  "categories": [
+    "props"
+  ],
+  "source": {
+    "provider": "Poly Haven",
+    "url": "https://polyhaven.com/a/vintage_pocket_watch",
+    "files_api": "https://api.polyhaven.com/files/vintage_pocket_watch"
+  }
+}

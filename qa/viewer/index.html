@@ -1,0 +1,30 @@
+<!doctype html><html><body style="margin:0;background:#888"><canvas id="c" style="width:100vw;height:100vh;display:block"></canvas>
+<script type="module">
+import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
+const q = new URLSearchParams(location.search)
+const r = new THREE.WebGLRenderer({ canvas: c, antialias: true }); r.setSize(innerWidth, innerHeight, false)
+r.toneMapping = THREE.ACESFilmicToneMapping
+const s = new THREE.Scene(); const pm = new THREE.PMREMGenerator(r); s.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture
+s.background = new THREE.Color(q.get('bg') || '#777')
+const cam = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.01, 5000)
+const l = new GLTFLoader(); l.setMeshoptDecoder(MeshoptDecoder)
+const g = await l.loadAsync(q.get('m'))
+s.add(g.scene)
+if (q.get('hide')) { const hs = q.get('hide').split(','); g.scene.traverse(o => { if (hs.includes(o.name)) o.visible = false }) }
+if (q.get('only')) { const hs = q.get('only').split(','); g.scene.traverse(o => { if (o.isMesh && !hs.includes(o.name)) o.visible = false }) }
+const box = new THREE.Box3().setFromObject(g.scene); const size = box.getSize(new THREE.Vector3()); const ctr = box.getCenter(new THREE.Vector3())
+const yaw = +(q.get('yaw') || 0.6), pitch = +(q.get('pitch') || 0.25), dist = +(q.get('dist') || 1.6)
+const R = size.length() * dist
+cam.position.set(ctr.x + Math.sin(yaw) * Math.cos(pitch) * R, ctr.y + Math.sin(pitch) * R, ctr.z + Math.cos(yaw) * Math.cos(pitch) * R); cam.lookAt(ctr)
+if (q.get('cam')) { const [a,b2,c2,d,e,f]=q.get('cam').split(',').map(Number); cam.position.set(a,b2,c2); cam.lookAt(d,e,f); cam.fov=+(q.get('fov')||50); cam.updateProjectionMatrix() }
+if (q.get('night')) { s.environmentIntensity = 0.15; s.background = new THREE.Color('#05060c') }
+let mixer
+if (g.animations.length) { mixer = new THREE.AnimationMixer(g.scene); const a = g.animations.find(a => a.name === q.get('anim')) || g.animations[0]; mixer.clipAction(a).play(); mixer.update(+(q.get('t') || 0.3)) }
+r.render(s, cam)
+const names = []; g.scene.traverse(o => { if (o.isMesh) names.push(o.name + ':' + (Array.isArray(o.material) ? o.material.map(m=>m.name).join('/') : o.material.name)) })
+window.THREE = THREE; window.ROOT = g.scene; window.ANIMS = g.animations; window.INFO = { size: size.toArray().map(v => +v.toFixed(3)), center: ctr.toArray().map(v => +v.toFixed(3)), anims: g.animations.map(a => a.name), meshes: names.length, sample: names.slice(0, 40) }
+document.title = 'ready'
+</script></body></html>

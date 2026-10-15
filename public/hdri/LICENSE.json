@@ -1,0 +1,42 @@
+{
+  "id": "polyhaven:studio_small_09",
+  "name": "Studio Small 09",
+  "license": "CC0",
+  "attribution_required": false,
+  "kind": "hdri",
+  "formats": [
+    "hdr",
+    "exr"
+  ],
+  "tags": [
+    "artificial light",
+    "indoor",
+    "infinity",
+    "lamp",
+    "medium contrast",
+    "photo",
+    "softbox",
+    "studio",
+    "umbrella",
+    "urban"
+  ],
+  "description": "Studio Small 09 \u2014 CC0 hdri by Sergej Majboroda (Poly Haven). Tags: artificial light, indoor, infinity, lamp, medium contrast, photo, softbox, studio, umbrella, urban.",
+  "engine_targets": [
+    "blender",
+    "godot",
+    "unreal"
+  ],
+  "preview_url": "https://cdn.polyhaven.com/asset_img/thumbs/studio_small_09.png?width=400",
+  "categories": [
+    "artificial light",
+    "indoor",
+    "medium contrast",
+    "studio",
+    "urban"
+  ],
+  "source": {
+    "provider": "Poly Haven",
+    "url": "https://polyhaven.com/a/studio_small_09",
+    "files_api": "https://api.polyhaven.com/files/studio_small_09"
+  }
+}

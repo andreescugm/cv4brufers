@@ -1,0 +1,41 @@
+{
+  "id": "polyhaven:marble_bust_01",
+  "name": "Marble Bust 01",
+  "license": "CC0",
+  "attribution_required": false,
+  "kind": "model",
+  "formats": [
+    "blend",
+    "glb",
+    "fbx",
+    "usd"
+  ],
+  "tags": [
+    "art",
+    "bust",
+    "decorative",
+    "man",
+    "mansion",
+    "marble",
+    "renaissance",
+    "sandstone",
+    "sculpt",
+    "sculpture",
+    "statue"
+  ],
+  "description": "Marble Bust 01 \u2014 CC0 model by Rico Cilliers (Poly Haven). Tags: art, bust, decorative, man, mansion, marble, renaissance, sandstone, sculpt, sculpture, statue.",
+  "engine_targets": [
+    "blender",
+    "godot",
+    "unreal"
+  ],
+  "preview_url": "https://cdn.polyhaven.com/asset_img/thumbs/marble_bust_01.png?width=400",
+  "categories": [
+    "decorative"
+  ],
+  "source": {
+    "provider": "Poly Haven",
+    "url": "https://polyhaven.com/a/marble_bust_01",
+    "files_api": "https://api.polyhaven.com/files/marble_bust_01"
+  }
+}
