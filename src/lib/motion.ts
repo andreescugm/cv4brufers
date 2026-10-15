@@ -27,7 +27,7 @@ export function hasWebGL(): boolean {
   if (webglCache !== null) return webglCache
   try {
     const c = document.createElement('canvas')
-    webglCache = !!(c.getContext('webgl2') || c.getContext('webgl'))
+    webglCache = !!(c.getContext('webgl2') || c.getContext('webgl') || c.getContext('experimental-webgl'))
   } catch {
     webglCache = false
   }

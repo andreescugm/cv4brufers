@@ -96,10 +96,27 @@ export default function ExperimentFrame({
   )
 }
 
-export function SceneStatus({ status, fallback }: { status: string; fallback: ReactNode }) {
+export function SceneStatus({ status }: { status: string; fallback?: ReactNode }) {
   if (status === 'ready') return null
-  if (status === 'unsupported' || status === 'error')
-    return <div className="exp-fallback">{fallback}</div>
+  if (status === 'unsupported')
+    return (
+      <div className="exp-fallback">
+        <p>
+          Esta escena es 3D en tiempo real y tu navegador tiene la aceleración gráfica desactivada.
+          <br />
+          Actívala (Chrome: Ajustes → Sistema → «Usar aceleración gráfica cuando esté disponible») y recarga.
+        </p>
+      </div>
+    )
+  if (status === 'error')
+    return (
+      <div className="exp-fallback">
+        <p>No se ha podido cargar la escena.</p>
+        <button type="button" className="exp-retry" onClick={() => window.location.reload()}>
+          Reintentar
+        </button>
+      </div>
+    )
   return (
     <div className="exp-loading" role="status">
       Cargando escena…

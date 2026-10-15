@@ -4,15 +4,6 @@ import { qualityTier, useReducedMotion } from '../lib/motion'
 import { span, useSectionProgress } from '../lib/scene'
 import './act5.css'
 
-/** CC BY 4.0 requires naming the author and linking the work. */
-const CREDITS = [
-  { title: 'Cyberpunk City', author: 'mortalityrexotable', url: 'https://sketchfab.com/3d-models/cyberpunk-city-3f24e5c5bf924f46b30d9a392afa9624' },
-  { title: 'The American Flag', author: 'ognuogaan135', url: 'https://sketchfab.com/3d-models/the-american-flag-34ce3deaa5da482893f546307e5a223a' },
-  { title: 'Bald Eagle', author: 'ucdavisterc', url: 'https://sketchfab.com/3d-models/bald-eagle-8874cfcf83a54575ba8068376f8a63a8' },
-  { title: 'Tiger rebuilt', author: 'kenchoo', url: 'https://sketchfab.com/3d-models/tiger-rebuilt-6b5d14b2de984ffcb00ee00e404ad208' },
-  { title: 'Jungle Tree', author: 'gelmi.com.br', url: 'https://sketchfab.com/3d-models/jungle-tree-b760147faadf41eabb2bb6cb85274d8a' },
-  { title: 'Osaka downtown', author: 'matousekfoto', url: 'https://sketchfab.com/3d-models/osaka-downtown-53e0980d555a4af6b921cc00c208e4a3' },
-]
 
 interface Grain {
   x: number
@@ -230,23 +221,6 @@ export default function Act5Close() {
           {profile.firstName} {profile.lastName}
         </p>
         <ContactLinks />
-        <p className="a5-credits">
-          Hecho con React, TypeScript, GSAP y three.js. Tipografías Big Shoulders, Instrument Sans e Instrument Serif
-          (SIL OFL).
-        </p>
-        <p className="a5-credits">
-          Modelos 3D bajo CC BY 4.0, con modificaciones (compresión, iluminación, animación):{' '}
-          {CREDITS.map((c, i) => (
-            <span key={c.url}>
-              <a href={c.url} target="_blank" rel="noopener noreferrer">
-                {c.title}
-              </a>{' '}
-              de {c.author}
-              {i < CREDITS.length - 1 ? ' · ' : '. '}
-            </span>
-          ))}
-          Vegetación, reloj, busto e iluminación HDRI de Poly Haven (CC0).
-        </p>
       </footer>
     </section>
   )

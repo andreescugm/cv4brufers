@@ -25,7 +25,7 @@ export default function City() {
           'Cámara tipo dron: plano general, descenso entre las torres y salida.',
         ],
       }}
-      status={<SceneStatus status={scene.status} fallback={<p>Tu navegador no tiene WebGL: esta escena necesita la GPU.</p>} />}
+      status={<SceneStatus status={scene.status} />}
     >
       {() => (
         <div ref={host} style={{ position: 'absolute', inset: 0 }}>

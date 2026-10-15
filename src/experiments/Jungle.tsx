@@ -29,7 +29,7 @@ export default function Jungle() {
       status={
         <SceneStatus
           status={scene.status}
-          fallback={<p>Tu navegador no tiene WebGL: esta escena necesita la GPU.</p>}
+         
         />
       }
     >

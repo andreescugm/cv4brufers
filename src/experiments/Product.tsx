@@ -40,7 +40,7 @@ export default function Product() {
           'Canvas transparente: los fondos y la tipografía son HTML detrás del objeto 3D.',
         ],
       }}
-      status={<SceneStatus status={scene.status} fallback={<p>Tu navegador no tiene WebGL: esta escena necesita la GPU.</p>} />}
+      status={<SceneStatus status={scene.status} />}
     >
       {() => (
         <div ref={host} className="prod" style={{ position: 'absolute', inset: 0 }}>

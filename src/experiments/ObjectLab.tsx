@@ -53,7 +53,7 @@ export default function ObjectLab() {
           'El cambio de material es un barrido con un plano de recorte, no un fundido.',
         ],
       }}
-      status={<SceneStatus status={scene.status} fallback={<p>Tu navegador no tiene WebGL: esta escena necesita la GPU.</p>} />}
+      status={<SceneStatus status={scene.status} />}
       controls={
         <div className="obj-modes" role="radiogroup" aria-label="Material del busto">
           {MODES.map((m, i) => (
