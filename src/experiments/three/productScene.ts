@@ -1,5 +1,6 @@
 import { HDRLoader } from 'three/examples/jsm/loaders/HDRLoader.js'
 import type { SceneApi, SceneFactory } from '../../lib/scene'
+import { asset } from '../../lib/asset'
 import { THREE, makeRenderer, loadGLTF, disposeObject, damp, lerp, seg, smooth } from './common'
 
 // angle (clockwise from 12) each hand is modelled at, measured from the mesh bounds
@@ -15,8 +16,8 @@ const create: SceneFactory = async (canvas, opts) => {
 
   const pmrem = new THREE.PMREMGenerator(renderer)
   const [hdr, gltf] = await Promise.all([
-    new HDRLoader().loadAsync('/hdri/studio_small_09_1k.hdr'),
-    loadGLTF('/models/vintage_pocket_watch/vintage_pocket_watch_1k.gltf'),
+    new HDRLoader().loadAsync(asset('/hdri/studio_small_09_1k.hdr')),
+    loadGLTF(asset('/models/vintage_pocket_watch/vintage_pocket_watch_1k.gltf')),
   ])
   const env = pmrem.fromEquirectangular(hdr).texture
   hdr.dispose()

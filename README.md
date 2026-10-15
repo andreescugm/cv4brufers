@@ -2,37 +2,35 @@
 
 Presentación web interactiva en cinco actos, construida para pedir una conversación profesional con Brufers Club.
 
-## Ejecutar
+**Web publicada:** https://andreescugm.github.io/cv4brufers/ (se despliega sola con cada `push` a `main` mediante GitHub Actions).
+
+## Ejecutar en local
+
+Requiere Node 20.19 o superior.
 
 ```bash
+git clone https://github.com/andreescugm/cv4brufers.git
+cd cv4brufers
 npm install
-npm run dev        # desarrollo en http://localhost:5173
-npm run build      # build de producción en dist/
-npm run preview    # sirve dist/ en http://localhost:4173
+npm run dev        # http://localhost:5173
 ```
 
-## Lo único que tienes que editar
-
-`src/content/profile.ts`:
-
-| Campo | Estado | Qué hacer |
-|---|---|---|
-| `photo` | **pendiente** | Copia tu foto con traje a `public/media/gabriel.jpg` y pon `'/media/gabriel.jpg'`. Mientras sea `null` se ve un marco rayado marcado como hueco. |
-| `contact.phone` | **pendiente** | Tu móvil en formato `'+34600000000'`. Al rellenarlo aparecen automáticamente los botones de WhatsApp y llamada. |
-| `contact.email` | rellenado | `andreescugm@proton.me`. Confirma que quieres que sea público o cámbialo. |
-| `builtClaim` | revisar | «Todo esto se construyó en un día.» Es cierto para esta versión (15/10/2026). Si sigues editando otros días, ajústala. |
-
-Las tres razones del Acto II están en `src/acts/Act2Why.tsx` (`REASONS`): son las únicas frases que hablan por ti; revísalas.
-
-## QA
+Producción:
 
 ```bash
-npm run build && npm run preview &
-node qa/shoot.mjs qa/shots desktop full     # capturas por escena + consola
-node qa/shoot.mjs qa/mobile mobile full
-node qa/shoot.mjs qa/reduced desktop reduced
-node qa/interact.mjs                        # pruebas funcionales
-npx impeccable detect dist/index.html       # detector de patrones genéricos
+npm run build      # genera dist/
+npm run preview    # http://localhost:4173
 ```
+
+## Datos personales
+
+Todo está en `src/content/profile.ts`: retrato, teléfono (+34 642 117 961, activa los botones de WhatsApp y llamada), correo y la frase del cierre.
+
+## Estructura
+
+- `src/acts/` — los cinco actos.
+- `src/experiments/` — los cinco experimentos del Acto IV; las escenas 3D están en `src/experiments/three/` y se cargan solo al acercarse.
+- `public/models/` — modelos 3D comprimidos (meshopt + WebP). Créditos y licencias en `ASSET_MANIFEST.md` y `licenses/`.
+- `qa/` — scripts de capturas y pruebas con Playwright (`npm i -D playwright` para usarlos).
 
 Documentación interna: `PROJECT_BRIEF.md`, `RESEARCH.md`, `DESIGN.md`, `IMPLEMENTATION_PLAN.md`, `ASSET_MANIFEST.md`, `QA_REPORT.md`.

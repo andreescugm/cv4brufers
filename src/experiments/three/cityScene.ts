@@ -1,4 +1,5 @@
 import type { SceneApi, SceneFactory } from '../../lib/scene'
+import { asset } from '../../lib/asset'
 import { THREE, makeRenderer, makePipeline, loadGLTF, disposeObject, damp, lerp, seg, smooth } from './common'
 
 /*
@@ -18,7 +19,7 @@ const create: SceneFactory = async (canvas, opts) => {
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 400)
   const pipe = makePipeline(renderer, scene, camera, opts, { strength: 1.1, radius: 0.6, threshold: 0.55 })
 
-  const gltf = await loadGLTF(opts.tier === 'high' ? '/models/sf/osaka_downtown.glb' : '/models/sf/osaka_downtown_lo.glb')
+  const gltf = await loadGLTF(opts.tier === 'high' ? asset('/models/sf/osaka_downtown.glb') : asset('/models/sf/osaka_downtown_lo.glb'))
   const city = gltf.scene
   const glow = { value: 0 }
   city.traverse((o) => {

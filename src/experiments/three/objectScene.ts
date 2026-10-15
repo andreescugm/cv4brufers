@@ -1,5 +1,6 @@
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 import type { SceneApi, SceneFactory } from '../../lib/scene'
+import { asset } from '../../lib/asset'
 import { THREE, makeRenderer, loadGLTF, disposeObject, damp, lerp } from './common'
 
 export interface ObjectSceneApi extends SceneApi {
@@ -37,7 +38,7 @@ const create: SceneFactory = async (canvas, opts) => {
   scene.environmentIntensity = 0.5
 
   const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 20)
-  const gltf = await loadGLTF('/models/marble_bust_01/marble_bust_01_1k.gltf')
+  const gltf = await loadGLTF(asset('/models/marble_bust_01/marble_bust_01_1k.gltf'))
   const source = gltf.scene.getObjectByProperty('isMesh', true) as THREE.Mesh
   const geom = source.geometry
   geom.computeBoundingBox()

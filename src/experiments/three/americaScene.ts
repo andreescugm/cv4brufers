@@ -1,5 +1,6 @@
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 import type { SceneApi, SceneFactory } from '../../lib/scene'
+import { asset } from '../../lib/asset'
 import { THREE, makeRenderer, makePipeline, loadGLTF, disposeObject, canvasTexture, damp, lerp, seg, smooth } from './common'
 
 /*
@@ -10,7 +11,7 @@ import { THREE, makeRenderer, makePipeline, loadGLTF, disposeObject, canvasTextu
  */
 
 const STREET_X = 2.15
-const IMG = '/media/gabriel-cut.webp'
+const IMG = asset('/media/gabriel-cut.webp')
 const RED = '#c8102e'
 const BLUE = '#1b2a6b'
 
@@ -120,9 +121,9 @@ const create: SceneFactory = async (canvas, opts) => {
 
   await document.fonts.load('900 64px "Big Shoulders Display"').catch(() => undefined)
   const [city, flag, eagle, portrait] = await Promise.all([
-    loadGLTF('/models/sf/cyberpunk_city.glb'),
-    loadGLTF('/models/sf/the_american_flag.glb'),
-    loadGLTF('/models/sf/bald_eagle.glb'),
+    loadGLTF(asset('/models/sf/cyberpunk_city.glb')),
+    loadGLTF(asset('/models/sf/the_american_flag.glb')),
+    loadGLTF(asset('/models/sf/bald_eagle.glb')),
     loadImage(IMG),
   ])
 

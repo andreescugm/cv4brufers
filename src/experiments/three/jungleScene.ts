@@ -1,5 +1,6 @@
 import { HDRLoader } from 'three/examples/jsm/loaders/HDRLoader.js'
 import type { SceneApi, SceneFactory } from '../../lib/scene'
+import { asset } from '../../lib/asset'
 import { THREE, makeRenderer, makePipeline, loadGLTF, disposeObject, damp, lerp, seg, smooth, rng } from './common'
 
 /*
@@ -28,14 +29,14 @@ const create: SceneFactory = async (canvas, opts) => {
 
   const pmrem = new THREE.PMREMGenerator(renderer)
   const [hdr, tigerG, treeG, fern, calathea, anthurium, roots, moss] = await Promise.all([
-    new HDRLoader().loadAsync('/hdri/mossy_forest_1k.hdr'),
-    loadGLTF('/models/sf/tiger_rebuilt.glb'),
-    loadGLTF('/models/sf/jungle_tree.glb'),
-    loadGLTF('/models/jungle/fern_02.glb'),
-    loadGLTF('/models/jungle/calathea_orbifolia_01.glb'),
-    loadGLTF('/models/jungle/anthurium_botany_01.glb'),
-    loadGLTF('/models/jungle/root_cluster_01.glb'),
-    loadGLTF('/models/jungle/moss_01.glb'),
+    new HDRLoader().loadAsync(asset('/hdri/mossy_forest_1k.hdr')),
+    loadGLTF(asset('/models/sf/tiger_rebuilt.glb')),
+    loadGLTF(asset('/models/sf/jungle_tree.glb')),
+    loadGLTF(asset('/models/jungle/fern_02.glb')),
+    loadGLTF(asset('/models/jungle/calathea_orbifolia_01.glb')),
+    loadGLTF(asset('/models/jungle/anthurium_botany_01.glb')),
+    loadGLTF(asset('/models/jungle/root_cluster_01.glb')),
+    loadGLTF(asset('/models/jungle/moss_01.glb')),
   ])
   const env = pmrem.fromEquirectangular(hdr).texture
   hdr.dispose()
